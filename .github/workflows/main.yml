@@ -28,15 +28,14 @@ jobs:
         fetch-depth: 1
       
     - name: Fetch MDI
-      uses: actions/checkout@v2
-      with:
-        path: 'MessengerDataIndex'
-        fetch-depth: 1
+      run: |
+        ls
+        git clone https://github.com/AnonyKagamine/MessengerDataIndex
+        ls
     - name: Generate Index
       run: |
         ls .
-        ls MessengerData
-        ls MessengerDataIndex
+        find MessengerDataIndex/
         find MessengerData | grep -E '\.json$' | python3 MessengerDataIndex/generate_index.py
         cp index.json MessengerDataIndex/
     - name: Commit Local Changes
