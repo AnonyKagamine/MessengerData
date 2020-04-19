@@ -34,7 +34,7 @@ jobs:
         fetch-depth: 1
     - name: Generate Index
       run: |
-        find MessengerData | grep -E '\.json$' | python3 MessengerDataIndex.py
+        find MessengerData | grep -E '\.json$' | python3 MessengerDataIndex/generate_index.py
         cp index.json MessengerDataIndex/
     - name: Commit Local Changes
       env:
