@@ -46,9 +46,11 @@ jobs:
         git config --global user.name $GIT_USER
         git add .
         git commit -m "Auto-generate new index" -a
+        cd ..
     
     - name: Push to MDI Repo
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.MY_GITHUB_API_TOKEN }}
         repository: 'AnonyKagamine/MessengerDataIndex'
+        directory: 'MessengerDataIndex' 
