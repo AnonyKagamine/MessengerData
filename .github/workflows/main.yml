@@ -21,21 +21,19 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Fetch MessengerData
-      uses: actions/checkout@v2
-      
-      with:
-        path: 'MessengerData'
-        fetch-depth: 1
+      run: |
+        ls .
+        git clone --depth 1 https://github.com/AnonyKagamine/MessengerData
+        find MessengerData
       
     - name: Fetch MDI
       run: |
+        git clone --depth 1 https://github.com/AnonyKagamine/MessengerDataIndex
         ls
-        git clone https://github.com/AnonyKagamine/MessengerDataIndex
-        ls
+      
     - name: Generate Index
       run: |
-        ls .
-        find MessengerDataIndex/
+        find .
         find MessengerData | grep -E '\.json$' | python3 MessengerDataIndex/generate_index.py
         cp index.json MessengerDataIndex/
     - name: Commit Local Changes
