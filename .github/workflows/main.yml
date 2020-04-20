@@ -7,8 +7,6 @@ name: Generate Index
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,18 +20,15 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Fetch MessengerData
       run: |
-        ls .
         git clone --depth 1 https://github.com/AnonyKagamine/MessengerData
-        find MessengerData
+        find MessengerData | grep -E '\.json$'
       
     - name: Fetch MDI
       run: |
         git clone --depth 1 https://github.com/AnonyKagamine/MessengerDataIndex
-        ls
       
     - name: Generate Index
       run: |
-        find .
         find MessengerData | grep -E '\.json$' | python3 MessengerDataIndex/generate_index.py
         cp index.json MessengerDataIndex/
     - name: Commit Local Changes
