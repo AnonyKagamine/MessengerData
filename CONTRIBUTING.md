@@ -28,3 +28,4 @@
 
 ## 注意事项
 * 考虑到兼容性，**不要** 修改已有的，能够正常工作的文件
+* 如果您贡献的文件 **不是** 语录集，请您把文件上传至 [z_playground](https://github.com/AnonyKagamine/MessengerData/tree/master/z_playground) 子目录下。
